@@ -1,0 +1,683 @@
+
+/* =========================
+   1. BASIC SETTINGS
+========================= */
+
+:root {
+    --primary: #4776e6;
+    --primary-dark: #345bc0;
+    --background: #f5f7fb;
+    --surface: #ffffff;
+    --text: #202b3c;
+    --muted: #778196;
+    --border: #e7eaf1;
+    --sidebar-width: 245px;
+    --shadow: 0 5px 22px rgba(30, 50, 90, 0.06);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--background);
+    color: var(--text);
+    line-height: 1.6;
+    transition: background 0.3s, color 0.3s;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* =========================
+   2. DARK MODE
+========================= */
+
+body.dark {
+    --background: #111827;
+    --surface: #1f2937;
+    --text: #f3f4f6;
+    --muted: #b0bacb;
+    --border: #374151;
+    --shadow: 0 5px 22px rgba(0, 0, 0, 0.15);
+}
+
+/* =========================
+   3. SIDEBAR
+========================= */
+
+.sidebar {
+    width: var(--sidebar-width);
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 28px 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 100;
+    transition: transform 0.3s;
+}
+
+.logo {
+    color: var(--primary);
+    font-size: 23px;
+    font-weight: 800;
+    margin: 0 0 40px 7px;
+}
+
+.sidebar nav {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nav-link {
+    display: block;
+    padding: 13px 15px;
+    border-radius: 10px;
+    color: var(--muted);
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    background: #edf2ff;
+    color: var(--primary);
+}
+
+body.dark .nav-link:hover,
+body.dark .nav-link.active {
+    background: #303d59;
+    color: #9bb8ff;
+}
+
+.sidebar-bottom p {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 15px;
+    text-align: center;
+}
+
+.theme-btn {
+    width: 100%;
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 12px;
+    border-radius: 9px;
+}
+
+/* =========================
+   4. MAIN CONTENT
+========================= */
+
+.main-content {
+    margin-left: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+.topbar {
+    min-height: 90px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 20px 35px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.topbar h2 {
+    font-size: 21px;
+}
+
+.muted {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.profile {
+    background: var(--background);
+    padding: 9px 15px;
+    border-radius: 30px;
+    font-size: 13px;
+    white-space: nowrap;
+}
+
+.menu-btn {
+    display: none;
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+.content {
+    padding: 32px 35px;
+    max-width: 1500px;
+    margin: auto;
+}
+
+.page {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.page.active-page {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================
+   5. WELCOME SECTION
+========================= */
+
+.welcome {
+    background: linear-gradient(120deg, #4776e6, #7957d5);
+    color: white;
+    padding: 36px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    min-height: 245px;
+    overflow: hidden;
+}
+
+.welcome > div:first-child {
+    max-width: 650px;
+}
+
+.welcome h1 {
+    font-size: clamp(25px, 3vw, 36px);
+    line-height: 1.25;
+    margin: 12px 0;
+}
+
+.welcome p {
+    font-size: 14px;
+    opacity: 0.92;
+}
+
+.welcome-icon {
+    font-size: 80px;
+    flex-shrink: 0;
+}
+
+.primary-btn {
+    background: white;
+    color: #4268d2;
+    font-weight: bold;
+    border: none;
+    border-radius: 9px;
+    padding: 12px 19px;
+    margin-top: 22px;
+}
+
+.primary-btn:hover {
+    transform: translateY(-2px);
+}
+
+/* =========================
+   6. STATISTICS
+========================= */
+
+.section-title {
+    font-size: 20px;
+    margin: 28px 0 18px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.stat-card {
+    background: var(--surface);
+    padding: 22px;
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+}
+
+.stat-card span {
+    font-size: 26px;
+}
+
+.stat-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+}
+
+.stat-card h2 {
+    color: var(--primary);
+    font-size: 29px;
+}
+
+/* =========================
+   7. SUBJECT CARDS
+========================= */
+
+.section-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.text-btn {
+    border: none;
+    color: var(--primary);
+    background: transparent;
+    font-weight: bold;
+}
+
+.subjects-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.subject-card,
+.note-card,
+.resource-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 15px;
+    padding: 22px;
+    box-shadow: var(--shadow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.subject-card:hover,
+.note-card:hover,
+.resource-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(30, 50, 90, 0.1);
+}
+
+.subject-icon {
+    width: 55px;
+    height: 55px;
+    border-radius: 14px;
+    display: grid;
+    place-items: center;
+    font-size: 28px;
+    background: var(--background);
+    margin-bottom: 17px;
+}
+
+.subject-card h3,
+.note-card h3,
+.resource-card h3 {
+    font-size: 17px;
+    margin-bottom: 8px;
+}
+
+.subject-card p,
+.note-card p,
+.resource-card p {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-top: 16px;
+}
+
+.tag {
+    display: inline-block;
+    background: #edf2ff;
+    color: #4169d2;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+body.dark .tag {
+    background: #303d59;
+    color: #b6c8ff;
+}
+
+.open-btn {
+    color: var(--primary);
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* =========================
+   8. PAGE INTRO AND SEARCH
+========================= */
+
+.page-intro {
+    margin-bottom: 25px;
+}
+
+.page-intro h1 {
+    font-size: 29px;
+    margin-bottom: 6px;
+}
+
+.page-intro p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 13px 16px;
+    margin-bottom: 25px;
+}
+
+.search-box input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.empty-message {
+    color: var(--muted);
+    text-align: center;
+    padding: 35px;
+}
+
+/* =========================
+   9. NOTES
+========================= */
+
+.notes-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.note-card {
+    position: relative;
+}
+
+.note-card .tag {
+    margin-bottom: 13px;
+}
+
+.note-card h3 {
+    font-size: 19px;
+}
+
+.note-card p {
+    line-height: 1.8;
+}
+
+.save-btn {
+    background: var(--background);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 7px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+}
+
+/* =========================
+   10. LEARNING RESOURCES
+========================= */
+
+.resources-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.resource-icon {
+    font-size: 37px;
+    margin-bottom: 15px;
+}
+
+.resource-card a {
+    display: inline-block;
+    color: var(--primary);
+    font-weight: bold;
+    font-size: 13px;
+}
+
+/* =========================
+   11. SUBJECT DETAILS
+========================= */
+
+.back-btn {
+    padding: 10px 15px;
+    background: var(--surface);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    margin-bottom: 25px;
+}
+
+.detail-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 28px;
+}
+
+.detail-panel h1 {
+    margin: 12px 0;
+}
+
+.detail-panel h2 {
+    margin: 25px 0 10px;
+    font-size: 20px;
+}
+
+.detail-panel p,
+.detail-panel li {
+    color: var(--muted);
+    margin-bottom: 10px;
+}
+
+.detail-panel ul {
+    padding-left: 22px;
+}
+
+.detail-panel .note-text {
+    color: var(--text);
+    background: var(--background);
+    padding: 16px;
+    border-radius: 10px;
+}
+
+/* =========================
+   12. DAILY TIP AND FOOTER
+========================= */
+
+.tip-box {
+    margin-top: 28px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--primary);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.tip-box h3 {
+    margin-bottom: 7px;
+}
+
+.tip-box p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+footer {
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 12px;
+    text-align: center;
+    padding: 22px;
+}
+
+/* =========================
+   13. TABLET RESPONSIVENESS
+========================= */
+
+@media (max-width: 1100px) {
+    .subjects-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .content {
+        padding: 25px;
+    }
+
+    .topbar {
+        padding: 18px 25px;
+    }
+}
+
+/* =========================
+   14. MOBILE RESPONSIVENESS
+========================= */
+
+@media (max-width: 700px) {
+    :root {
+        --sidebar-width: 245px;
+    }
+
+    .sidebar {
+        transform: translateX(-100%);
+        box-shadow: none;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+        box-shadow: 10px 0 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .topbar {
+        min-height: 78px;
+        padding: 15px;
+        gap: 10px;
+    }
+
+    .topbar h2 {
+        font-size: 17px;
+    }
+
+    .topbar .muted {
+        font-size: 11px;
+    }
+
+    .profile {
+        padding: 7px 10px;
+        font-size: 11px;
+    }
+
+    .content {
+        padding: 18px 14px;
+    }
+
+    .welcome {
+        padding: 25px 20px;
+        min-height: auto;
+    }
+
+    .welcome h1 {
+        font-size: 26px;
+    }
+
+    .welcome-icon {
+        font-size: 45px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .stat-card {
+        padding: 16px;
+    }
+
+    .stat-card h2 {
+        font-size: 24px;
+    }
+
+    .subjects-grid,
+    .notes-grid,
+    .resources-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .page-intro h1 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 380px) {
+    .welcome-icon {
+        display: none;
+    }
+
+    .topbar .muted {
+        display: none;
+    }
+}

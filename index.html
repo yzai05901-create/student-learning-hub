@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+   <link rel="stylesheet" href="style.css">
+    <script src="first.js" defer></script>
+</head>
+<body>
+  
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LearnSphere | Student Learning Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+
+    <aside class="sidebar" id="sidebar">
+        <div class="logo">📚 LearnSphere</div>
+
+        <nav>
+            <a href="#home" class="nav-link active" data-page="home">🏠 Dashboard</a>
+            <a href="#subjects" class="nav-link" data-page="subjects">📖 Subjects</a>
+            <a href="#notes" class="nav-link" data-page="notes">📝 My Notes</a>
+            <a href="#resources" class="nav-link" data-page="resources">🌐 Resources</a>
+        </nav>
+
+        <div class="sidebar-bottom">
+            <button id="themeBtn" class="theme-btn">🌙 Dark Mode</button>
+            <p>Learn something new every day!</p>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="topbar">
+            <button class="menu-btn" id="menuBtn" aria-label="Toggle menu">☰</button>
+            <div>
+                <h2 id="pageTitle">Dashboard</h2>
+                <p class="muted">Your personal learning space</p>
+            </div>
+            <div class="profile">🎓 Student</div>
+        </header>
+
+        <div class="content">
+
+            <section id="home" class="page active-page">
+                <div class="welcome">
+                    <div>
+                        <p>WELCOME BACK 👋</p>
+                        <h1>Keep Learning, Keep Growing!</h1>
+                        <p>Learn new skills and build your future one lesson at a time.</p>
+                        <button class="primary-btn" data-go="subjects">Explore Subjects →</button>
+                    </div>
+                    <div class="welcome-icon">🚀</div>
+                </div>
+
+                <h2 class="section-title">Your Learning Overview</h2>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <span>📚</span>
+                        <p>Total Subjects</p>
+                        <h2 id="subjectCount">6</h2>
+                    </div>
+                    <div class="stat-card">
+                        <span>📝</span>
+                        <p>Available Notes</p>
+                        <h2 id="noteCount">6</h2>
+                    </div>
+                    <div class="stat-card">
+                        <span>🌐</span>
+                        <p>Learning Resources</p>
+                        <h2>4</h2>
+                    </div>
+                </div>
+
+                <div class="section-heading">
+                    <h2 class="section-title">Popular Subjects</h2>
+                    <button class="text-btn" data-go="subjects">View All →</button>
+                </div>
+                <div id="homeSubjects" class="subjects-grid"></div>
+
+                <div class="tip-box">
+                    <h3>💡 Daily Learning Tip</h3>
+                    <p>Study for 25 minutes, take a 5-minute break, and repeat. Small daily steps lead to big results!</p>
+                </div>
+            </section>
+
+            <section id="subjects" class="page">
+                <div class="page-intro">
+                    <h1>Explore Subjects 📚</h1>
+                    <p>Choose a subject and start improving your skills.</p>
+                </div>
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="search" id="subjectSearch"
+                           placeholder="Search subjects...">
+                </div>
+                <div id="allSubjects" class="subjects-grid"></div>
+                <p id="noSubjects" class="empty-message" hidden>No subjects found.</p>
+            </section>
+
+            <section id="notes" class="page">
+                <div class="page-intro">
+                    <h1>My Study Notes 📝</h1>
+                    <p>Search easy explanations and revise important topics.</p>
+                </div>
+                <div class="search-box">
+                    <span>🔍</span>
+                    <input type="search" id="noteSearch"
+                           placeholder="Search notes or topics...">
+                </div>
+                <div id="notesGrid" class="notes-grid"></div>
+                <p id="noNotes" class="empty-message" hidden>No notes found.</p>
+            </section>
+
+            <section id="resources" class="page">
+                <div class="page-intro">
+                    <h1>Learning Resources 🌐</h1>
+                    <p>Explore helpful websites to improve your knowledge.</p>
+                </div>
+
+                <div class="resources-grid">
+                    <article class="resource-card">
+                        <div class="resource-icon">💻</div>
+                        <h3>W3Schools</h3>
+                        <p>Learn HTML, CSS, JavaScript, and other programming technologies.</p>
+                        <a href="https://www.w3schools.com/" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">🐍</div>
+                        <h3>Python.org</h3>
+                        <p>Explore Python documentation and programming tutorials.</p>
+                        <a href="https://www.python.org/doc/" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">🎓</div>
+                        <h3>Khan Academy</h3>
+                        <p>Study mathematics, computing, science, and many other subjects.</p>
+                        <a href="https://www.khanacademy.org/" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+                    </article>
+
+                    <article class="resource-card">
+                        <div class="resource-icon">📖</div>
+                        <h3>MDN Web Docs</h3>
+                        <p>Learn web development through detailed documentation and examples.</p>
+                        <a href="https://developer.mozilla.org/" target="_blank" rel="noopener noreferrer">Visit Website ↗</a>
+                    </article>
+                </div>
+            </section>
+
+            <section id="detail" class="page">
+                <button class="back-btn" data-go="subjects">← Back to Subjects</button>
+                <div id="detailContent"></div>
+            </section>
+
+        </div>
+
+        <footer>© 2026 LearnSphere | Keep Learning, Keep Growing 🌱</footer>
+    </main>
+
+</body>
+</html>
+
+</body>
+</html>
